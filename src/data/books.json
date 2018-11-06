@@ -1,0 +1,101 @@
+[
+    {
+        "id": "3379cd02-753e-4201-ae5c-de7c27da6160",
+        "name": "Harry Potter and the Sorcerer's Stone",
+        "borrowed": false,
+        "description": "first book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "470ff528-68b8-4b4a-881a-b15c4f362892",
+        "name": "Harry Potter and the Chamber of Secrets",
+        "borrowed": false,
+        "description": "second book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "012de4e9-834d-40b4-ba57-5545d8b15d81",
+        "name": "Harry Potter and the Prisoner of Azkaban",
+        "borrowed": false,
+        "description": "third book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "d780f465-025f-41eb-9579-9ab44291537b",
+        "name": "Harry Potter and the Goblet of Fire",
+        "borrowed": false,
+        "description": "fourth book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "8e407926-e703-415a-9a6c-7c4f786ce8e1",
+        "name": "Harry Potter and the Order of the Pheonix",
+        "borrowed": false,
+        "description": "fifth book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "42bd0ab7-f435-4d51-89eb-aa60e9a106b5",
+        "name": "Harry Potter and the Halfblood Prince",
+        "borrowed": false,
+        "description": "sixth book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "8019cf09-ffac-42c3-9e2f-b01e777ef7d7",
+        "name": "Harry Potter and the Deathly Hallows",
+        "borrowed": false,
+        "description": "seventh book in Harry Potter series",
+        "authors": [
+            "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
+        ]
+    },
+    {
+        "id": "076e8177-ed1d-4efb-a4b5-62701f7a22cf",
+        "name": "The Hunger Games",
+        "borrowed": false,
+        "description": "first book in Hunger Games series",
+        "authors": [
+            "9c43eea3-da10-4366-99bc-42c94d4d0a3c"
+        ]
+    },
+    {
+        "id": "7376a60b-dbdb-4ec9-8f39-e1865bb793be",
+        "name": "Catching Fire",
+        "borrowed": false,
+        "description": "second book in Hunger Games series",
+        "authors": [
+            "9c43eea3-da10-4366-99bc-42c94d4d0a3c"
+        ]
+    },
+    {
+        "id": "e137e7e9-df48-48ce-b985-cb87198e3834",
+        "name": "Mockingjay",
+        "borrowed": false,
+        "description": "third book in Hunger Games series",
+        "authors": [
+            "9c43eea3-da10-4366-99bc-42c94d4d0a3c"
+        ]
+    },
+    {
+        "id": "86b1c5ec-3d36-42cc-ae09-c7dc22368af1",
+        "name": "The Great Gatsby",
+        "borrowed": false,
+        "description": "classic novel set in the Jazz Age",
+        "authors": [
+            "e993fe80-2393-4fc3-8e20-e302889f835f"
+        ]
+    }
+]
