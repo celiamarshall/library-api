@@ -1,7 +1,7 @@
-const authors = require('./data/authors.json')
-const books = require('./data/books.json')
+const fs = require('fs')
 
 function checkForAuthorId(id) {
+    const authors = JSON.parse(fs.readFileSync('src/data/authors.json'))
     const errors = []
     const authorWithId = authors.find(author => author.id === id)
 
@@ -9,11 +9,12 @@ function checkForAuthorId(id) {
         errors.push('Author not found')
         return { errors }
     }
-
-    return authorWithId
+    const authorIdx = authors.indexOf(authorWithId)
+    return authorIdx
 }
 
 function checkForBook(id) {
+    const books = JSON.parse(fs.readFileSync('src/data/books.json'))
     const errors = []
     const bookWithId = books.find(book => book.id === id)
 
@@ -22,10 +23,12 @@ function checkForBook(id) {
         return { errors }
     }
 
-    return bookWithId
+    const bookIdx = books.indexOf(bookWithId)
+    return bookIdx
 }
 
 function checkForAuthor(firstName, lastName) {
+    const authors = JSON.parse(fs.readFileSync('src/data/authors.json'))
     const authorsWithFirstName = authors.filter(author => author.firstName === firstName)
     const authorWithSameName = authorsWithFirstName.find(author => author.lastName === lastName)
 

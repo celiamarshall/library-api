@@ -31,12 +31,8 @@ function update(req, res, next) {
     const id = req.params.id
     const result = models.update(id, req.body)
 
-    if (result.errors400) {
-        return next({ status: 400, error: { message: result.errors400 } })
-    }
-
-    if (result.errors404) {
-        return next({ status: 404, error: { message: result.errors404 } })
+    if (result.errors) {
+        return next({ status: result.status, error: { message: result.errors } })
     }
 
     res.status(201).json({ data: result })

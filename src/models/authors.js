@@ -1,20 +1,19 @@
-const authors = require('../data/authors.json')
-const books = require('../data/books.json')
 const uuid = require('uuid/v4')
 const utils = require('../utils')
 const fs = require('fs')
 
-//const books = JSON.parse(fs.readFileSync('../data/books.json'))
-//const authors = JSON.parse(fs.readFileSync('../data/authors.json'))
-
 
 function getAll(id) {
+    const authors = JSON.parse(fs.readFileSync('src/data/authors.json'))
+    const books = JSON.parse(fs.readFileSync('src/data/books.json'))
     const response = []
-    const book = utils.checkForBook(id)
+    const bookIdx = utils.checkForBook(id)
 
-    if (book.errors) {
-        return { errors: book.errors }
+    if (bookIdx.errors) {
+        return { errors: bookIdx.errors }
     }
+
+    const book = books[bookIdx]
 
     const authorIds = book.authors
 
@@ -30,11 +29,16 @@ function getAll(id) {
 
 //can create multiple authors for a book, author input is an array of objects
 function create(id, authorsInput) {
-    const book = utils.checkForBook(id)
+    const authors = JSON.parse(fs.readFileSync('src/data/authors.json'))
+    const books = JSON.parse(fs.readFileSync('src/data/books.json'))
     
-    if (book.errors) {
-        return { errors: book.errors }
+    const bookIdx = utils.checkForBook(id)
+    
+    if (bookIdx.errors) {
+        return { errors: bookIdx.errors }
     }
+
+    const book = books[bookIdx]
 
     book.authors = []
 
@@ -50,26 +54,33 @@ function create(id, authorsInput) {
         }
     }
 
-    // const booksJSON = JSON.stringify(books)
-    // fs.writeFileSync('../data/books.json', booksJSON)
+    const authorsJSON = JSON.stringify(authors, null, 4)
+    fs.writeFileSync('src/data/authors.json', authorsJSON)
 
-    // const authorsJSON = JSON.stringify(authors)
-    // fs.writeFileSync('../data/authors.json', authorsJSON)
+    const booksJSON = JSON.stringify(books, null, 4)
+    fs.writeFileSync('src/data/books.json', booksJSON)
 
     return book
 }
 
 //updating one author, author input is an object
 function update(id, authorId, authorInput) {
-    const book = utils.checkForBook(id)
+    const authors = JSON.parse(fs.readFileSync('src/data/authors.json'))
+    const bookIdx = utils.checkForBook(id)
 
-    if (book.errors) {
-        return { errors: book.errors }
+    if (bookIdx.errors) {
+        return { status: 404, errors: bookIdx.errors }
     }
-    const author = utils.checkForAuthorId(authorId)
+    const authorIdx = utils.checkForAuthorId(authorId)
 
-    if (author.errors) {
-        return { errors: author.errors }
+    if (authorIdx.errors) {
+        return { status: 404, errors: authorIdx.errors }
+    }
+
+    const author = authors[authorIdx]
+
+    if (!authorInput) {
+        return {status: 400, errors: 'Please enter updated information'}
     }
 
     if(authorInput.firstName) {
@@ -80,36 +91,42 @@ function update(id, authorId, authorInput) {
         author.lastName = authorInput.lastName
     }
 
-    authors.push(author)
-
-    // const authorsJSON = JSON.stringify(authors)
-    // fs.writeFileSync('../data/authors.json', authorsJSON)
+    const authorsJSON = JSON.stringify(authors, null, 4)
+    fs.writeFileSync('src/data/authors.json', authorsJSON)
 
     return author
 }
 
 function remove(id, authorId) {
-    const book = utils.checkForBook(id)
+    const authors = JSON.parse(fs.readFileSync('src/data/authors.json'))
+    const books = JSON.parse(fs.readFileSync('src/data/books.json'))
+    const bookIdx = utils.checkForBook(id)
 
-    if (book.errors) {
-        return { errors: book.errors }
-    }
-    const author = utils.checkForAuthorId(authorId)
-
-    if (author.errors) {
-        return { errors: author.errors }
+    if (bookIdx.errors) {
+        return { errors: bookIdx.errors }
     }
 
-    authorIdx = book.authors.indexOf(author)
-    book.authors.splice(authorIdx, 1)
+    const authorIdx = utils.checkForAuthorId(authorId)
+    
+    if (authorIdx.errors) {
+        return { errors: authorIdx.errors }
+    }
 
-    // const booksJSON = JSON.stringify(books)
-    // fs.writeFileSync('../data/books.json', booksJSON)
+    const book = books[bookIdx]
+    const author = authors[authorIdx]
 
-    // const authorsJSON = JSON.stringify(authors)
-    // fs.writeFileSync('../data/authors.json', authorsJSON)
+    authorBookIdx = book.authors.indexOf(author)
+    book.authors.splice(authorBookIdx, 1)
 
-    return book
+    const authorsJSON = JSON.stringify(authors, null, 4)
+    fs.writeFileSync('src/data/authors.json', authorsJSON)
+
+
+    const booksJSON = JSON.stringify(books, null, 4)
+    fs.writeFileSync('src/data/books.json', booksJSON)
+
+
+    return author
 }
 
 

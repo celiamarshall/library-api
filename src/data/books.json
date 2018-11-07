@@ -1,9 +1,9 @@
 [
     {
-        "id": "3379cd02-753e-4201-ae5c-de7c27da6160",
+        "id": "32a95362-0c52-4e85-90ff-2f6b19a8563f",
         "name": "Harry Potter and the Sorcerer's Stone",
         "borrowed": false,
-        "description": "first book in Harry Potter series",
+        "description": "first book the Harry Potter series",
         "authors": [
             "f7dc6738-10ce-4302-8cb1-80b4fc7e4f7d"
         ]
@@ -96,6 +96,16 @@
         "description": "classic novel set in the Jazz Age",
         "authors": [
             "e993fe80-2393-4fc3-8e20-e302889f835f"
+        ]
+    },
+    {
+        "id": "00f45f17-c79a-4887-b2bb-460ef267f0ca",
+        "name": "The Pragmatic Programmer",
+        "borrowed": false,
+        "description": "examines the core processes of software development",
+        "authors": [
+            "5344da0c-62f9-429c-bfb1-0975a8972de9",
+            "a4362e84-74b4-4388-b0fc-34f4b6f446e7"
         ]
     }
 ]
