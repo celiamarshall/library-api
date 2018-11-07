@@ -1,24 +1,20 @@
-const model = require('../models/authors')
+const models = require('../models/authors')
 
 function getAll(req, res, next) {
-    const limit = req.query.limit
-    const data = models.getAll(limit)
-    res.status(200).json(data)
-}
-
-function getOne(req, res, next) {
     const id = req.params.id
-    const result = models.getOne(id)
+    const limit = req.query.limit
+    const result = models.getAll(id)
 
     if (result.errors) {
         return next({ status: 400, error: { message: result.errors } })
     }
 
-    res.status(200).json({ data: result })
+    res.json(result)
 }
 
 function create(req, res, next) {
-    const result = models.create(req.body)
+    const id = req.params.id
+    const result = models.create(id, req.body.authors)
 
     if (result.errors) {
         return next({ status: 400, error: { message: result.errors } })
@@ -29,7 +25,8 @@ function create(req, res, next) {
 
 function update(req, res, next) {
     const id = req.params.id
-    const result = models.update(id, req.body)
+    const authorId = req.params.authorId
+    const result = models.update(id, authorId, req.body.authors)
 
     if (result.errors400) {
         return next({ status: 400, error: { message: result.errors400 } })
@@ -44,7 +41,9 @@ function update(req, res, next) {
 
 function remove(req, res, next) {
     const id = req.params.id
-    const result = models.remove(id)
+    const authorId = req.params.authorId
+    
+    const result = models.remove(id, authorId)
 
     if (result.errors) {
         return next({ status: 400, error: { message: result.errors } })
@@ -53,4 +52,5 @@ function remove(req, res, next) {
     res.status(200).json({ data: result })
 }
 
-module.exports = { getAll, getOne, create, update, remove }
+
+module.exports = { getAll, create, update, remove }

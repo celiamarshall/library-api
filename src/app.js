@@ -5,10 +5,10 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 
 app.use(bodyParser.json())
-if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
+app.use(morgan('dev'))
 
 const routes = require('./routes/library')
-app.use('/library', routes)
+app.use('/books', routes)
 
 app.use((req, res, next) => {
     next({ status: 404, error: { message: 'Not found' } })
